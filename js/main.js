@@ -13,11 +13,16 @@ $(function(){
 		}
 	});
 
+	var orderTemp = "<li class=\"list-group-item\">"+
+	"<b>{{name}}, </b>{{drink}}"+
+	"<button class='btn remove' data-id='{{id}}'>X</button>"+
+	"</li>";
+
 	var displayData = function(i, order){
 		var orderName = order.name;
 		var orderDrink = order.drink;
 		if (orderName && orderDrink){
-			$orderList.append("<li class=\"list-group-item\"><b>" + orderName + "</b>, "+ orderDrink + "</li>");
+			$orderList.append(Mustache.render(orderTemp, order));
 		}
 
 	}
@@ -46,5 +51,37 @@ $(function(){
 			}
 		});
 	});
+
+	$orderList.delegate("button", "click", function(){
+
+		console.log("hey");
+		var id = $(this).attr('data-id');
+		console.log(id);
+
+		$li = $(this).closest('li');
+		$.ajax({
+			type:'DELETE',
+			url: 'http://rest.learncode.academy/api/johnbob/friends/' + id,
+			success: function(data){
+				console.log("sucess");
+				var me = $(this);
+
+				console.log(me);
+				$li.fadeOut(300, function(){
+					$(this).remove();
+				});
+
+
+			},
+			error: function(data){
+				console.log("fail");
+				var me = $(this);
+
+				console.log(me);
+			}
+		});
+
+	});
+
 
 });
