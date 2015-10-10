@@ -14,6 +14,14 @@
 		<p>See who's ahead of you</p>
 		<p><a class="btn btn-primary btn-lg" href="http://jennylian.com/" role="button">About me</a></p>
 	</div>
+
+	<template id="orderTemplate">
+		<li class="list-group-item">
+			<b>{{name}}, </b>{{drink}}
+			<button class='btn remove' data-id='{{id}}'>X</button>
+		</li>
+	</template>
+	
 	<div class="container">
 
 		<ul class="list-group" id="order">

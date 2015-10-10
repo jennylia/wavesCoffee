@@ -13,10 +13,7 @@ $(function(){
 		}
 	});
 
-	var orderTemp = "<li class=\"list-group-item\">"+
-	"<b>{{name}}, </b>{{drink}}"+
-	"<button class='btn remove' data-id='{{id}}'>X</button>"+
-	"</li>";
+	var orderTemp = $('#orderTemplate').html();
 
 	var displayData = function(i, order){
 		var orderName = order.name;

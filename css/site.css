@@ -1,7 +1,7 @@
-button {
+.btn.remove {
  right: 10;
  position: absolute;
-}
+};
 
 .list-group-item{
     overflow:hidden;
