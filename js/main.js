@@ -22,11 +22,29 @@ $(function(){
 
 	}
 
-	$orderName = $('#name').val();
-	$orderDrink = $('#order').val();
+	$orderName = $('#name');
+	$orderDrink = $('#drink')
 	//for submitting an order
-	var neworder = {
-		
-	};
+	
+
+	$('#submitOrder').on('click', function(){
+		var neworder = {
+			name: $orderName.val(),
+			drink: $orderDrink.val()
+		};
+
+		$.ajax({
+			type:'POST',
+			url: 'http://rest.learncode.academy/api/johnbob/friends',
+			data: neworder,
+			success: function(data){
+				console.log(data);
+				displayData(0,data);
+			},
+			error: function(data){
+				console.log("fail" + data);
+			}
+		});
+	});
 
 });
