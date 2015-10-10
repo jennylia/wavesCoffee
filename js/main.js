@@ -15,8 +15,18 @@ $(function(){
 
 	var displayData = function(i, order){
 		var orderName = order.name;
-		if (orderName){
-			$orderList.append("<li class=\"list-group-item\">" + order.name + "</li>");}
+		var orderDrink = order.drink;
+		if (orderName && orderDrink){
+			$orderList.append("<li class=\"list-group-item\"><b>" + orderName + "</b>, "+ orderDrink + "</li>");
 		}
 
-	});
+	}
+
+	$orderName = $('#name').val();
+	$orderDrink = $('#order').val();
+	//for submitting an order
+	var neworder = {
+		
+	};
+
+});
