@@ -1,8 +1,26 @@
-.btn.remove {
- right: 10;
- position: absolute;
-};
+.btn {
+	float: right;
+	margin: 2;
+}
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 10px 15px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    overflow-y: hidden;
+}
 
-.list-group-item{
-    overflow:hidden;
+
+ul li .edit {
+	display: none;
+}
+
+ul li.edit .edit{
+	display: initial;
+}
+
+ul li.edit .noedit{
+	display: none;
 }

@@ -49,7 +49,7 @@ $(function(){
 		});
 	});
 
-	$orderList.delegate("button", "click", function(){
+	$orderList.delegate("button.btn.remove", "click", function(){
 
 		console.log("hey");
 		var id = $(this).attr('data-id');
@@ -79,6 +79,59 @@ $(function(){
 		});
 
 	});
+
+	//This is for editting
+	$orderList.delegate("button.btn.editOrder", "click", function(){
+		$li = $(this).closest('li');
+		$li.addClass('edit');
+		$li.find('.edit.name').val($li.find('.noedit.name').html());
+		$li.find('.edit.drink').val($li.find('.noedit.drink').html());
+		console.log("edit has been clicked");
+
+		
+	});
+
+	$orderList.delegate("button.btn.cancelEdit", "click", function(){
+		$li = $(this).closest('li');
+		$li.removeClass('edit');
+		console.log("cancel has been clicked");
+	});
+
+
+	$orderList.delegate("button.btn.saveOrder", "click", function(){
+		$li = $(this).closest('li');
+		console.log("save has been clicked");
+
+		var updateOrder = {
+			name: $li.find('.edit.name').val(),
+			drink: $li.find('.edit.drink').val()
+		};
+
+		console.log(updateOrder.name);
+		console.log(updateOrder.drink);
+		var id = $li.attr('data-id');
+
+		$.ajax({
+			type:'PUT',
+			url: 'http://rest.learncode.academy/api/johnbob/friends/' + id,
+			data: updateOrder,
+			success: function(data){
+				console.log("successfully updated status:" + data);
+				console.log(updateOrder.name);
+				console.log(updateOrder.drink);
+
+				$li.find('.noedit.name').html(updateOrder.name);
+			},
+			error: function(data){
+				console.log("Fail" + data);
+			}
+		});
+		$li.removeClass('edit');
+
+
+	});
+
+
 
 
 });

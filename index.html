@@ -16,12 +16,20 @@
 	</div>
 
 	<template id="orderTemplate">
-		<li class="list-group-item">
-			<b>{{name}}, </b>{{drink}}
-			<button class='btn remove' data-id='{{id}}'>X</button>
+		<li class="list-group-item" data-id='{{id}}'>
+			<b><span class="noedit name">{{name}}</span>
+				<input class="edit name"/>
+				,</b>
+			
+			<span class="noedit drink"> {{drink}} </span> 
+			<input class="edit drink"/>
+			<button class='btn remove noedit' data-id='{{id}}'>X</button>
+			<button class='btn editOrder noedit' data-id='{{id}}'>Edit</button>
+			<button class='btn saveOrder edit' data-id='{{id}}'>Save</button>
+			<button class='btn cancelEdit edit' data-id='{{id}}'>Cancel</button>
 		</li>
 	</template>
-	
+
 	<div class="container">
 
 		<ul class="list-group" id="order">
